@@ -1,0 +1,15 @@
+# AcoWorth Config
+#
+# Developed By LittleBigBug
+# https://github.com/littlebigbug/acoworth
+
+# How many rows do we store of data per item?
+# Don't set this too high or it might take a while for
+# /worth to calculate if sales accumulate that high
+maxPerItem: 50
+
+# Wether to only account to worth if items are being sold to the sign/shop or bought from the sign/shop
+# Default is Buy, usually signs that allow selling are way lower prices.
+# Can be BUY, SELL, or BOTH
+trackSaleTypes: BUY
+

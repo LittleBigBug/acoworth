@@ -1,0 +1,19 @@
+name: AcoWorth
+version: 1.0.0
+main: net.yasfu.acoworth.AcoWorthPlugin
+api-version: 1.15
+load: POSTWORLD
+author: LittleBigBug
+website: yasfu.net
+depend: [ChestShop]
+commands:
+  worth:
+    description: Checks the worth of an item you're holding or of an item material
+    permission: acoworth.check
+    usages: /<command> [item_id]
+  acoworth:
+    description: AcoWorth main command
+    aliases:
+      - aw
+    permission: acoworth.admin
+    usages: /<command>
