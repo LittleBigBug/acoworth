@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 
 public class Storage {
 
-    public static FileConfiguration fileCfg;
-    public static Logger logger;
     public static Connection conn;
 
     public static void connect() {
@@ -20,7 +18,7 @@ public class Storage {
 
             checkTables();
         } catch (SQLException e) {
-            logger.severe(e.getMessage());
+            AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
         }
     }
 
@@ -28,7 +26,7 @@ public class Storage {
         try {
             conn.close();
         } catch (SQLException | NullPointerException e) {
-            logger.severe(e.getMessage());
+            AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
         }
     }
 
@@ -50,7 +48,7 @@ public class Storage {
                     "lastWorth DOUBLE NOT NULL, " +
                     "needsUpdate TINYINT(1) NOT NULL DEFAULT 0)");
         } catch (SQLException e) {
-            logger.severe(e.getMessage());
+            AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
         }
     }
 
@@ -59,7 +57,7 @@ public class Storage {
             Statement st = conn.createStatement();
             st.setQueryTimeout(30);
 
-            int fileCap = fileCfg.getInt("maxPerItem");
+            int fileCap = AcoWorthPlugin.singleton.getConfig().getInt("maxPerItem");
 
             String matName = mat.toString();
 
@@ -69,7 +67,7 @@ public class Storage {
                     "AND mc_material = '" + matName + "'");
             st.executeUpdate("UPDATE worth SET needsUpdate = 1 WHERE mc_material = '" + matName + "'");
         } catch (SQLException e) {
-            logger.severe(e.getMessage());
+            AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
         }
     }
 
@@ -137,6 +135,10 @@ public class Storage {
             avgSt3 /= st3Values.size();
             avgSt3 = Math.sqrt(avgSt3);
 
+            double multiplier = AcoWorthPlugin.singleton.getConfig().getDouble("standardDeviationMuiltiplier");
+
+            avgSt3 *= multiplier;
+
             double finalAvg = 0;
             int used = 0;
 
@@ -164,9 +166,9 @@ public class Storage {
             long timeEnd = System.currentTimeMillis();
             long diff = timeEnd - timeStart;
 
-            logger.info("Calculated new worth for '" + mat.name() + "' took " + diff + "ms");
+            AcoWorthPlugin.singleton.getLogger().info("Calculated new worth for '" + mat.name() + "' took " + diff + "ms");
         } catch (SQLException e) {
-            logger.severe(e.getMessage());
+            AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
             return -2d;
         }
 

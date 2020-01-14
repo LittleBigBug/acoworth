@@ -51,11 +51,10 @@ public class ChestshopListener implements Listener {
         int itemCount = 0;
 
         for (ItemStack i : mergeSimilarStacks(stock)) {
-            itemCount += item.getAmount();
+            itemCount += i.getAmount();
         }
 
         double cost = trEvent.getExactPrice().doubleValue();
-        Bukkit.getLogger().info(String.valueOf(itemCount));
         cost /= itemCount;
 
         Storage.addSale(mat, cost);

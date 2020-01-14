@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc1731ff-1f67-46fb-9c35-9540da3a09ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/acoworth.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/QuickShop-Reremake.3.0.8.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/QuickshopListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/AcoWorthPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/AcoWorthPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ChestshopListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/ChestshopListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/ChestshopListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/ChestshopListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/QuickshopListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/QuickshopListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +41,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1W8wGWCPHdLSOr96KCbfTpTl0K0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -55,9 +61,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -103,30 +110,38 @@
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state x="1835" y="179" width="800" height="672" key="#SQL_Dialects/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578631505739" />
-    <state x="1698" y="176" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578631616404">
+    <state x="1698" y="176" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578981489686">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state x="1698" y="176" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578631616404" />
+    <state x="1698" y="176" width="1084" height="735" key="#com.intellij.execution.impl.EditConfigurationsDialog/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578981489686" />
     <state x="2048" y="257" width="374" height="557" key="#com.intellij.ide.util.MemberChooser" timestamp="1578546195965">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state x="2048" y="257" width="374" height="557" key="#com.intellij.ide.util.MemberChooser/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578546195965" />
-    <state width="1878" height="167" key="GridCell.Tab.0.bottom" timestamp="1578632655743">
+    <state x="1929" y="162" width="624" height="700" key="#com.intellij.unscramble.UnscrambleDialog" timestamp="1578977474004">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="167" key="GridCell.Tab.0.bottom/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578632655743" />
-    <state width="1878" height="167" key="GridCell.Tab.0.center" timestamp="1578632655743">
+    <state x="1929" y="162" width="624" height="700" key="#com.intellij.unscramble.UnscrambleDialog/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578977474004" />
+    <state width="1878" height="167" key="GridCell.Tab.0.bottom" timestamp="1578982724886">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="167" key="GridCell.Tab.0.center/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578632655743" />
-    <state width="1878" height="167" key="GridCell.Tab.0.left" timestamp="1578632655743">
+    <state width="1878" height="167" key="GridCell.Tab.0.bottom/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
+    <state width="1878" height="167" key="GridCell.Tab.0.center" timestamp="1578982724886">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="167" key="GridCell.Tab.0.left/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578632655743" />
-    <state width="1878" height="167" key="GridCell.Tab.0.right" timestamp="1578632655743">
+    <state width="1878" height="167" key="GridCell.Tab.0.center/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
+    <state width="1878" height="167" key="GridCell.Tab.0.left" timestamp="1578982724886">
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="167" key="GridCell.Tab.0.right/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578632655743" />
+    <state width="1878" height="167" key="GridCell.Tab.0.left/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
+    <state width="1878" height="167" key="GridCell.Tab.0.right" timestamp="1578982724886">
+      <screen x="1280" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="167" key="GridCell.Tab.0.right/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
+    <state x="1723" y="95" width="1024" height="840" key="SettingsEditor" timestamp="1578981800429">
+      <screen x="1280" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1723" y="95" width="1024" height="840" key="SettingsEditor/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578981800429" />
     <state x="643" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1578950513383">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

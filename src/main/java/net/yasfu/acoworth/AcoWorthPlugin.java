@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 
 public class AcoWorthPlugin extends JavaPlugin {
 
+    public static AcoWorthPlugin singleton;
+
     @Override
     public void onEnable() {
         String version = getDescription().getVersion();
@@ -29,8 +31,8 @@ public class AcoWorthPlugin extends JavaPlugin {
 
         this.saveDefaultConfig();
 
-        Storage.logger = logger;
-        Storage.fileCfg = getConfig();
+        singleton = this;
+
         Storage.connect();
 
         this.getCommand("worth").setExecutor(new WorthCommand(this));
@@ -39,8 +41,18 @@ public class AcoWorthPlugin extends JavaPlugin {
         Server srv = getServer();
         PluginManager plManager = srv.getPluginManager();
 
-        plManager.registerEvents(new ChestshopListener(this), this);
-        plManager.registerEvents(new QuickshopListener(this), this);
+        boolean chestShopEnabled = plManager.isPluginEnabled("ChestShop");
+        boolean quickShopEnabled = plManager.isPluginEnabled("QuickShop");
+
+        if (chestShopEnabled) {
+            plManager.registerEvents(new ChestshopListener(this), this);
+            logger.info("ChestShop was found! Using ChestShop.");
+        }
+
+        if (quickShopEnabled) {
+            plManager.registerEvents(new QuickshopListener(this), this);
+            logger.info("QuickShop was found! Using QuickShop.");
+        }
     }
 
     @Override
@@ -50,7 +62,6 @@ public class AcoWorthPlugin extends JavaPlugin {
 
         logger.info("Stopping AcoWorth - " + version);
 
-        Storage.logger = logger;
         Storage.disconnect();
 
         HandlerList.unregisterAll(this);

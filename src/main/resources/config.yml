@@ -13,3 +13,9 @@ maxPerItem: 50
 # Can be BUY, SELL, or BOTH
 trackSaleTypes: BUY
 
+# This affects how much the standard deviation being applied to sale averages is scaled.
+# For each sale record, it checks to see if the number is within the average of all sales
+# minus and plus the standard deviation.
+# This setting will multiply the standard deviation and will match more records but may have a less precise
+# Worth result but will show more data from outliers
+standardDeviationMuiltiplier: 1.0

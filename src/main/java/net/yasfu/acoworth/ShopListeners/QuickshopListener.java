@@ -35,12 +35,12 @@ public class QuickshopListener implements Listener {
 
         switch (type) {
             case "BUY":
-                if (shopType != ShopType.BUYING) {
+                if (shopType == ShopType.BUYING) { // this is if the SHOP is buying, not the player.
                     return;
                 }
                 break;
             case "SELL":
-                if (shopType != ShopType.SELLING) {
+                if (shopType == ShopType.SELLING) { // this is if the SHOP is selling, not the player.
                     return;
                 }
                 break;
