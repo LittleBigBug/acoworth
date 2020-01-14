@@ -1,6 +1,10 @@
 package net.yasfu.acoworth;
 
+import net.yasfu.acoworth.ShopListeners.ChestshopListener;
+import net.yasfu.acoworth.ShopListeners.QuickshopListener;
+import org.bukkit.Server;
 import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -32,7 +36,11 @@ public class AcoWorthPlugin extends JavaPlugin {
         this.getCommand("worth").setExecutor(new WorthCommand(this));
         this.getCommand("acoworth").setExecutor(new AcoWorthCommand(this));
 
-        getServer().getPluginManager().registerEvents(new ChestshopListener(this), this);
+        Server srv = getServer();
+        PluginManager plManager = srv.getPluginManager();
+
+        plManager.registerEvents(new ChestshopListener(this), this);
+        plManager.registerEvents(new QuickshopListener(this), this);
     }
 
     @Override
