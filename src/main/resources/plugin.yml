@@ -6,7 +6,7 @@ api-version: 1.15
 load: POSTWORLD
 author: LittleBigBug
 website: yasfu.net
-softdepend: [ChestShop,QuickShop]
+softdepend: [ChestShop,QuickShop,Shop]
 commands:
   worth:
     description: Checks the worth of an item you're holding or of an item material

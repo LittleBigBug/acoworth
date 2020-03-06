@@ -1,11 +1,8 @@
 package net.yasfu.acoworth;
 
-import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Logger;
+import org.bukkit.Material;
 
 public class Storage {
 

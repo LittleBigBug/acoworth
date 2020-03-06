@@ -1,18 +1,21 @@
 package net.yasfu.acoworth.ShopListeners;
 
-import com.Acrobot.ChestShop.Events.TransactionEvent;
-import net.yasfu.acoworth.AcoWorthPlugin;
-import net.yasfu.acoworth.Storage;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.configuration.file.FileConfiguration;
+import net.yasfu.acoworth.Storage;
+import net.yasfu.acoworth.AcoWorthPlugin;
+import com.Acrobot.ChestShop.Events.TransactionEvent;
 
 import static com.Acrobot.Breeze.Utils.InventoryUtil.mergeSimilarStacks;
+
+/*
+Chestshop 3
+https://www.spigotmc.org/resources/chestshop.51856/
+ */
 
 public class ChestshopListener implements Listener {
 
@@ -24,6 +27,10 @@ public class ChestshopListener implements Listener {
 
     @EventHandler (priority = EventPriority.MONITOR)
     private void onChestShopSale(TransactionEvent trEvent) {
+        if (trEvent.isCancelled()) {
+            return;
+        }
+
         FileConfiguration cfg = plugin.getConfig();
         String type = cfg.getString("trackSaleTypes");
 

@@ -1,17 +1,22 @@
 package net.yasfu.acoworth.ShopListeners;
 
-import com.Acrobot.ChestShop.Events.TransactionEvent;
-import net.yasfu.acoworth.AcoWorthPlugin;
-import net.yasfu.acoworth.Storage;
+
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
-import org.maxgamer.quickshop.Event.ShopSuccessPurchaseEvent;
+import org.bukkit.configuration.file.FileConfiguration;
+import net.yasfu.acoworth.Storage;
+import net.yasfu.acoworth.AcoWorthPlugin;
 import org.maxgamer.quickshop.Shop.Shop;
 import org.maxgamer.quickshop.Shop.ShopType;
+import org.maxgamer.quickshop.Event.ShopSuccessPurchaseEvent;
+
+/*
+QuickShop Reremake
+https://www.spigotmc.org/resources/quickshop-reremake-1-15-ready-bees-bees-bee.62575/
+ */
 
 public class QuickshopListener implements Listener {
 
@@ -23,6 +28,10 @@ public class QuickshopListener implements Listener {
 
     @EventHandler (priority = EventPriority.MONITOR)
     public void onQuickShopSale(ShopSuccessPurchaseEvent shopPurchaseEvent) {
+        if (shopPurchaseEvent.isCancelled()) {
+            return;
+        }
+
         FileConfiguration cfg = plugin.getConfig();
         String type = cfg.getString("trackSaleTypes");
 

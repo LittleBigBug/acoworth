@@ -1,18 +1,27 @@
 package net.yasfu.acoworth;
 
-import net.yasfu.acoworth.ShopListeners.ChestshopListener;
-import net.yasfu.acoworth.ShopListeners.QuickshopListener;
+import java.io.File;
+import java.util.logging.Logger;
 import org.bukkit.Server;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.util.logging.Logger;
+import net.yasfu.acoworth.ShopListeners.ChestshopListener;
+import net.yasfu.acoworth.ShopListeners.QuickshopListener;
 
 public class AcoWorthPlugin extends JavaPlugin {
 
     public static AcoWorthPlugin singleton;
+
+    private static final boolean buildOptionalSnowgears = isSnowgearsPresent();
+    private static boolean isSnowgearsPresent() {
+        try {
+            Class.forName("com.snowgears.shop.Shop");
+            return true;
+        } catch (ClassNotFoundException ex) {
+            return false;
+        }
+    }
 
     @Override
     public void onEnable() {
@@ -24,15 +33,10 @@ public class AcoWorthPlugin extends JavaPlugin {
         logger.info("https://github.com/littlebigbug/acoworth");
 
         File f = new File(getDataFolder() + "/");
-
-        if (!f.exists()) {
-            f.mkdir();
-        }
-
+        if (!f.exists()) { f.mkdir(); }
         this.saveDefaultConfig();
 
         singleton = this;
-
         Storage.connect();
 
         this.getCommand("worth").setExecutor(new WorthCommand(this));
@@ -40,6 +44,8 @@ public class AcoWorthPlugin extends JavaPlugin {
 
         Server srv = getServer();
         PluginManager plManager = srv.getPluginManager();
+
+        // TODO: this is gross
 
         boolean chestShopEnabled = plManager.isPluginEnabled("ChestShop");
         boolean quickShopEnabled = plManager.isPluginEnabled("QuickShop");
@@ -53,6 +59,14 @@ public class AcoWorthPlugin extends JavaPlugin {
             plManager.registerEvents(new QuickshopListener(this), this);
             logger.info("QuickShop was found! Using QuickShop.");
         }
+
+        if (buildOptionalSnowgears) {
+            boolean gearsShopEnabled = plManager.isPluginEnabled("Shop");
+            if (gearsShopEnabled) {
+                //plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
+                logger.info("Snowgears' Shop was found! Using Shop.");
+            }
+        }
     }
 
     @Override
@@ -61,9 +75,7 @@ public class AcoWorthPlugin extends JavaPlugin {
         Logger logger = getLogger();
 
         logger.info("Stopping AcoWorth - " + version);
-
         Storage.disconnect();
-
         HandlerList.unregisterAll(this);
     }
 

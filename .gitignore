@@ -1,4 +1,5 @@
-
 .DS_Store
-
 target/
+
+# Shop by snowgears is a paid plugin and I can't distribute it on github
+lib/Shop.jar
