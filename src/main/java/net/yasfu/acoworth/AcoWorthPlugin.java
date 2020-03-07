@@ -18,7 +18,7 @@ public class AcoWorthPlugin extends JavaPlugin {
         try {
             Class.forName("com.snowgears.shop.Shop");
             return true;
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
             return false;
         }
     }

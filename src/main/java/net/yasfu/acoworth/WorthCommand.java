@@ -20,21 +20,37 @@ public class WorthCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
         if (!(sender instanceof Player) && args.length < 1) {
-            sender.sendMessage(ChatColor.RED + "Usage: /" + s + " <item id>");
+            sender.sendMessage(ChatColor.RED + "Usage: /" + s + " [amount=1] [item id]");
             return true;
         }
 
         Material checkMat = null;
+        int amount = 1;
 
         if (args.length > 0 && args[0] != null) {
             String matArg = args[0];
+
+            if (args.length > 1 && args[1] != null) {
+                matArg = args[1];
+
+                try {
+                    amount = Integer.parseInt(args[0]);
+                } catch (NumberFormatException e) {
+                    amount = 1;
+                }
+            }
+
             Material mat = Material.matchMaterial(matArg);
 
             if (mat != null) {
                 checkMat = mat;
             } else {
-                sender.sendMessage(ChatColor.RED + "The id '" + matArg + "' is not a valid minecraft material.");
-                return true;
+                try {
+                    amount = Integer.parseInt(args[0]);
+                } catch (NumberFormatException e) {
+                    sender.sendMessage(ChatColor.RED + "The id '" + matArg + "' is not a valid minecraft material.");
+                    return true;
+                }
             }
         }
 
@@ -63,10 +79,12 @@ public class WorthCommand implements CommandExecutor {
                 return true;
         }
 
+        worth *= amount;
+
         DecimalFormat decimalFormat = new DecimalFormat("#,###.00");
         String formatWorth = decimalFormat.format(worth);
 
-        sender.sendMessage(ChatColor.DARK_AQUA + "1 " + ChatColor.AQUA + checkMat.name() + ChatColor.DARK_AQUA + " on average sells for " + ChatColor.AQUA + "$" + formatWorth);
+        sender.sendMessage(ChatColor.DARK_AQUA + Integer.toString(amount) + " " + ChatColor.AQUA + checkMat.name() + ChatColor.DARK_AQUA + " on average sells for " + ChatColor.AQUA + "$" + formatWorth);
 
         return true;
     }
