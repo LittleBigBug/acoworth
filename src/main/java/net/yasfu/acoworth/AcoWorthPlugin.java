@@ -60,10 +60,10 @@ public class AcoWorthPlugin extends JavaPlugin {
             logger.info("QuickShop was found! Using QuickShop.");
         }
 
-        if (buildOptionalSnowgears) {
+        if (!buildOptionalSnowgears) {
             boolean gearsShopEnabled = plManager.isPluginEnabled("Shop");
             if (gearsShopEnabled) {
-                //plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
+                plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
                 logger.info("Snowgears' Shop was found! Using Shop.");
             }
         }

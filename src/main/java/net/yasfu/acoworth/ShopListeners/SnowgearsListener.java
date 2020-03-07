@@ -15,6 +15,14 @@ import com.snowgears.shop.event.PlayerExchangeShopEvent;
 /*
 Shop by Snowgears
 https://www.spigotmc.org/resources/shop-a-simple-intuitive-shop-plugin.9628/
+
+Premium plugin. If you don't own a copy of this plugin you need to build without it.
+Build with Maven WITHOUT the build-with-snowgears-shop profile checked.
+If you want to build with snowgears, make sure to install the jar to a local repo
+https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html
+
+mvn install:install-file -Dfile=lib/Shop-SnowGears.jar -DgroupId=com.snowgears \
+    -DartifactId=shop -Dversion=1.8.1 -Dpackaging=jar
  */
 
 public class SnowgearsListener implements Listener {

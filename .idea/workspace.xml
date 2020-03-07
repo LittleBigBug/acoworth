@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc1731ff-1f67-46fb-9c35-9540da3a09ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/acoworth.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/acoworth.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/AcoWorthPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/AcoWorthPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/ChestshopListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/ChestshopListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/QuickshopListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/QuickshopListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/WorthCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/WorthCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +41,14 @@
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
+    </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="build-with-snowgears-shop" />
+      </list>
     </option>
   </component>
   <component name="ProjectId" id="1W8wGWCPHdLSOr96KCbfTpTl0K0" />
@@ -61,19 +63,29 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.excludes" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\JonesE\IdeaProjects\acoworth\lib" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ethan\IdeaProjects\acoworth\lib" />
+      <recent name="C:\Users\ethan\IdeaProjects\acoworth\lib\com\snowgears\shop\1.8.1" />
+      <recent name="C:\Users\ethan\IdeaProjects\acoworth\lib\org\maxgamer\quickshop\3.0.8.1" />
+      <recent name="C:\Users\ethan\IdeaProjects\acoworth\lib\org\maxgamer\quickshop" />
+      <recent name="C:\Users\ethan\IdeaProjects\acoworth\lib\org\maxgamer\3" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install:install-file -Dfile=lib/QuickShop-Reremake.3.0.8.1.jar -DgroupId=org.maxgamer -DartifactId=quickshop -Dversion=3.0.8.1 -Dpackaging=jar " />
+      <command value="mvn install:install-file -Dfile=lib/Shop.jar -DgroupId=com.snowgears -DartifactId=shop -Dversion=1.8.1 -Dpackaging=jar " />
+    </option>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -101,6 +113,8 @@
       <workItem from="1578950511714" duration="2000000" />
       <workItem from="1583508881462" duration="628000" />
       <workItem from="1583509518170" duration="6252000" />
+      <workItem from="1583555523545" duration="3948000" />
+      <workItem from="1583559489240" duration="1850000" />
     </task>
     <servers />
   </component>
@@ -112,9 +126,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="874" y="359" key="#Deployment/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583509277186" />
-    <state x="1835" y="179" width="924" height="672" key="#Project_Structure" timestamp="1578624623544">
-      <screen x="1280" y="0" width="1920" height="1080" />
+    <state x="555" y="172" width="924" height="672" key="#Project_Structure" timestamp="1583556162585">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="555" y="172" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583556162585" />
     <state x="1835" y="179" width="924" height="672" key="#Project_Structure/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578624623544" />
     <state x="1835" y="179" width="800" height="672" key="#SQL_Dialects" timestamp="1578631505739">
       <screen x="1280" y="0" width="1920" height="1080" />
@@ -132,34 +147,48 @@
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state x="1929" y="162" width="624" height="700" key="#com.intellij.unscramble.UnscrambleDialog/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578977474004" />
-    <state width="2518" height="400" key="GridCell.Tab.0.bottom" timestamp="1583515794443">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="681" y="200" key="FileChooserDialogImpl" timestamp="1583558021227">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="681" y="200" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583558021227" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1583559981116">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559981116" />
     <state width="2518" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794443" />
     <state width="1878" height="167" key="GridCell.Tab.0.bottom/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state width="2518" height="400" key="GridCell.Tab.0.center" timestamp="1583515794442">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1583559981116">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559981116" />
     <state width="2518" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794442" />
     <state width="1878" height="167" key="GridCell.Tab.0.center/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state width="2518" height="400" key="GridCell.Tab.0.left" timestamp="1583515794442">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1583559981116">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559981116" />
     <state width="2518" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794442" />
     <state width="1878" height="167" key="GridCell.Tab.0.left/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state width="2518" height="400" key="GridCell.Tab.0.right" timestamp="1583515794442">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1583559981116">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559981116" />
     <state width="2518" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794442" />
     <state width="1878" height="167" key="GridCell.Tab.0.right/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state x="591" y="123" width="1024" height="840" key="SettingsEditor" timestamp="1583511014929">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1583561331485">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583561331485" />
+    <state x="278" y="115" width="916" height="708" key="SettingsEditor" timestamp="1583559289443">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="278" y="115" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559289443" />
     <state x="591" y="123" key="SettingsEditor/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583511014929" />
     <state x="1723" y="95" width="1024" height="840" key="SettingsEditor/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578981800429" />
-    <state x="857" y="467" key="com.intellij.ide.util.TipDialog" timestamp="1583509520194">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="643" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1583559496803">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="643" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559496803" />
     <state x="643" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578950513383" />
     <state x="857" y="467" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583509520194" />
     <state x="848" y="336" width="863" height="672" key="find.popup" timestamp="1583515601302">
@@ -171,6 +200,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="705" y="321" key="new project wizard/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583509537521" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1583557127778">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583557127778" />
     <state x="840" y="304" width="896" height="880" key="search.everywhere.popup" timestamp="1583510226025">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
