@@ -6,8 +6,8 @@ This plugin is great for economy servers to easily allow players to compete in t
 
 Currently, ChestShop and QuickShop Reremake are the only player shops supported at this time. If you would like to request a different plugin to be supported [please make an issue in the github issue tracker](https://github.com/LittleBigBug/acoworth/issues) and I'll get to it when I can.
 
-- [ChestShop-3](https://github.com/ChestShop-authors/ChestShop-3) [Spigot](https://www.spigotmc.org/resources/chestshop.51856/)
-- [QuickShop Reremake](https://github.com/Ghost-chu/QuickShop-Reremake) [Spigot](https://www.spigotmc.org/resources/quickshop-reremake-1-15-ready-bees-bees-bee.62575/)
+- [ChestShop-3](https://github.com/ChestShop-authors/ChestShop-3) | [[Spigot]](https://www.spigotmc.org/resources/chestshop.51856/)
+- [QuickShop Reremake](https://github.com/Ghost-chu/QuickShop-Reremake) | [[Spigot]](https://www.spigotmc.org/resources/quickshop-reremake-1-15-ready-bees-bees-bee.62575/)
 
 ## Helpful Links
 
