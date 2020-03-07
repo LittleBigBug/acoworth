@@ -29,7 +29,9 @@ Replace the filepath after -Dfile to the path of your QuickShop Plugin Jar
 
 Currently there is a loose implementation to support SnowGear's Premium Shop plugin (see [#2](https://github.com/LittleBigBug/acoworth/issues/2)). Obviously due to this plugin being premium I cannot include a jar in source, and not everyone who wants to compile has access to the plugin.
 
-AcoWorth's maven project contains a profile called `build-with-snowgears-shop` and will not try to add snowgears as a dependency and will not load or compile the listener class. Sometimes using maven build packaging fails without Snowgears shop and the build snowgears shop profile disabled, `net.yasfu.acoworth/ShopListeners/SnowgearsListener.java` will also have syntax errors in the IDE. First run the "compile" goal/lifecycle before the package goal/lifecycle like shown below.
+AcoWorth's maven project contains a profile called `build-with-snowgears-shop` and will not try to add snowgears as a dependency and will not load or compile the listener class. Sometimes using maven build packaging fails without Snowgears shop and the build snowgears shop profile disabled, `net.yasfu.acoworth/ShopListeners/SnowgearsListener.java` will also have syntax errors in the IDE. First run the "compile" goal/lifecycle before the package goal/lifecycle like shown below. 
+
+If that doesn't work, just delete the SnowgearsListener.java class and the references to it in AcoWorthPlugin.java
 
 Build the maven project with the package goal/lifecycle and the AcoWorth jar will be built in `target/`
 
