@@ -8,6 +8,7 @@ Currently, ChestShop and QuickShop Reremake are the only player shops supported 
 
 - [ChestShop-3](https://github.com/ChestShop-authors/ChestShop-3) | [[Spigot]](https://www.spigotmc.org/resources/chestshop.51856/)
 - [QuickShop Reremake](https://github.com/Ghost-chu/QuickShop-Reremake) | [[Spigot]](https://www.spigotmc.org/resources/quickshop-reremake-1-15-ready-bees-bees-bee.62575/)
+- [AuctionHouse [Spigot]](https://www.spigotmc.org/resources/auctionhouse.61836/)
 
 ## Helpful Links
 
@@ -26,6 +27,13 @@ mvn install:install-file -Dfile=lib/QuickShop-Reremake.3.0.8.1.jar -DgroupId=org
 ```
 
 Replace the filepath after -Dfile to the path of your QuickShop Plugin Jar
+
+The same applies for AuctionHouse:
+
+```
+mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk \
+    -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar
+```
 
 Currently there is a loose implementation to support SnowGear's Premium Shop plugin (see [#2](https://github.com/LittleBigBug/acoworth/issues/2)). Obviously due to this plugin being premium I cannot include a jar in source, and not everyone who wants to compile has access to the plugin.
 

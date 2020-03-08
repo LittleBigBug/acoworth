@@ -1,4 +1,4 @@
-# AcoWorth Config
+# AcoWorth v@version@ Config
 #
 # Developed By LittleBigBug
 # https://github.com/littlebigbug/acoworth
@@ -19,3 +19,7 @@ trackSaleTypes: BUY
 # This setting will multiply the standard deviation and will match more records but may have a less precise
 # Worth result but will show more data from outliers
 standardDeviationMuiltiplier: 1.0
+
+# Enable AuctionHouse support (if it exists)
+# AuctionHouse isn't affected by trackSaleTypes
+enableAuction: true

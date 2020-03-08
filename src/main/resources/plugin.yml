@@ -1,12 +1,12 @@
 name: AcoWorth
 description: Keeps track of item sales and calculates approximate worth for each.
-version: 1.2.1
+version: @version@
 main: net.yasfu.acoworth.AcoWorthPlugin
-api-version: 1.15
+api-version: @spigot-version@
 load: POSTWORLD
 author: LittleBigBug
 website: yasfu.net
-softdepend: [ChestShop,QuickShop,Shop]
+softdepend: [ChestShop,QuickShop,Shop,AuctionHouse]
 commands:
   worth:
     description: Checks the worth of an item you're holding or of an item material

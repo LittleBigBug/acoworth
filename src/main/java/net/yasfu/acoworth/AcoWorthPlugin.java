@@ -2,12 +2,18 @@ package net.yasfu.acoworth;
 
 import java.io.File;
 import java.util.logging.Logger;
+
 import org.bukkit.Server;
 import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import com.Acrobot.ChestShop.ChestShop;
+import org.maxgamer.quickshop.QuickShop;
+import com.spawnchunk.auctionhouse.AuctionHouse;
 import net.yasfu.acoworth.ShopListeners.ChestshopListener;
 import net.yasfu.acoworth.ShopListeners.QuickshopListener;
+import net.yasfu.acoworth.ShopListeners.AuctionHouseListener;
 
 public class AcoWorthPlugin extends JavaPlugin {
 
@@ -45,24 +51,28 @@ public class AcoWorthPlugin extends JavaPlugin {
         Server srv = getServer();
         PluginManager plManager = srv.getPluginManager();
 
-        // TODO: this is gross
+        Plugin chestShop = plManager.getPlugin("ChestShop");
+        Plugin quickShop = plManager.getPlugin("QuickShop");
+        Plugin auctionHouse = plManager.getPlugin("AuctionHouse");
 
-        boolean chestShopEnabled = plManager.isPluginEnabled("ChestShop");
-        boolean quickShopEnabled = plManager.isPluginEnabled("QuickShop");
-
-        if (chestShopEnabled) {
+        if (chestShop instanceof ChestShop) {
             plManager.registerEvents(new ChestshopListener(this), this);
             logger.info("ChestShop was found! Using ChestShop.");
         }
 
-        if (quickShopEnabled) {
+        if (quickShop instanceof QuickShop) {
             plManager.registerEvents(new QuickshopListener(this), this);
             logger.info("QuickShop was found! Using QuickShop.");
         }
 
+        if (auctionHouse instanceof AuctionHouse) {
+            plManager.registerEvents(new AuctionHouseListener(this), this);
+            logger.info("AuctionHouse was found! Using AuctionHouse.");
+        }
+
         if (!buildOptionalSnowgears) {
-            boolean gearsShopEnabled = plManager.isPluginEnabled("Shop");
-            if (gearsShopEnabled) {
+            Plugin gearsShop = plManager.getPlugin("Shop");
+            if (gearsShop instanceof com.snowgears.shop.Shop) {
                 plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
                 logger.info("Snowgears' Shop was found! Using Shop.");
             }
