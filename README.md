@@ -1,4 +1,4 @@
-# AcoWorth
+# AcoWorth | QuantumShop support Branch
 
 AcoWorth is a simple but useful stats plugin for economy spigot-based servers that hook into Player Shops and tracks individual item sales. A player can later check the worth of the item and it will get an approximate average sale price for that item.
 
@@ -8,6 +8,7 @@ Currently, ChestShop and QuickShop Reremake are the only player shops supported 
 
 - [ChestShop-3](https://github.com/ChestShop-authors/ChestShop-3) | [[Spigot]](https://www.spigotmc.org/resources/chestshop.51856/)
 - [QuickShop Reremake](https://github.com/Ghost-chu/QuickShop-Reremake) | [[Spigot]](https://www.spigotmc.org/resources/quickshop-reremake-1-15-ready-bees-bees-bee.62575/)
+- [QuantumShop (PREMIUM) [Spigot]](https://www.spigotmc.org/resources/quantumshop-1-13-1-15.50696/)  
 
 ## Helpful Links
 
@@ -23,6 +24,13 @@ Quickshop Reremake does not have a maven repository so you must add the jar to t
 ```
 mvn install:install-file -Dfile=lib/QuickShop-Reremake.3.0.8.1.jar -DgroupId=org.maxgamer \
     -DartifactId=quickshop -Dversion=3.0.8.1 -Dpackaging=jar
+```
+
+To build the QuantumShop admin gui shop support branch you need to check the new build-with-quantum-shop profile in maven. You also need a copy of the plugin's jar in order to build, since the plugin is premium the jar is not allowed to be distributed on this repository. Perform the same maven command for Quickshop for Quantumshop to add it to the local maven repository as well. Quantum shop's group name is `su.nightexpress`.
+
+```
+mvn install:install-file -Dfile=lib/QuantumShop.jar -DgroupId=su.nightexpress \
+    -DartifactId=quantumshop -Dversion=3.6.7 -Dpackaging=jar
 ```
 
 Replace the filepath after -Dfile to the path of your QuickShop Plugin Jar
