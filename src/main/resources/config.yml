@@ -19,3 +19,8 @@ trackSaleTypes: BUY
 # This setting will multiply the standard deviation and will match more records but may have a less precise
 # Worth result but will show more data from outliers
 standardDeviationMuiltiplier: 1.0
+
+# Quantumshop admin shop
+# Enable this to track admin shop sales in Quantum Shop
+# https://github.com/LittleBigBug/acoworth/tree/quantumshop-adminshop
+quantumShopAdminShop: false

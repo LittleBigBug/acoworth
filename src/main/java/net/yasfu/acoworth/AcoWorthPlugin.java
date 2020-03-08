@@ -14,9 +14,18 @@ public class AcoWorthPlugin extends JavaPlugin {
     public static AcoWorthPlugin singleton;
 
     private static final boolean buildOptionalSnowgears = isSnowgearsPresent();
+    private static final boolean buildOptionalQuantum = isQuantumPresent();
     private static boolean isSnowgearsPresent() {
         try {
             Class.forName("com.snowgears.shop.Shop");
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+    private static boolean isQuantumPresent() {
+        try {
+            Class.forName("su.nightexpress.quantumshop.QuantumShop");
             return true;
         } catch (Exception ex) {
             return false;
@@ -60,11 +69,19 @@ public class AcoWorthPlugin extends JavaPlugin {
             logger.info("QuickShop was found! Using QuickShop.");
         }
 
-        if (!buildOptionalSnowgears) {
+        if (buildOptionalSnowgears) {
             boolean gearsShopEnabled = plManager.isPluginEnabled("Shop");
             if (gearsShopEnabled) {
                 plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
                 logger.info("Snowgears' Shop was found! Using Shop.");
+            }
+        }
+
+        if (buildOptionalQuantum) {
+            boolean quantShopEnabled = plManager.isPluginEnabled("QuantumShop");
+            if (quantShopEnabled) {
+                plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.QuantumshopListener(this), this);
+                logger.info("Quantumshop was found! Using Quantumshop. (Special developer build, chestshops and quantumshop do not work");
             }
         }
     }
