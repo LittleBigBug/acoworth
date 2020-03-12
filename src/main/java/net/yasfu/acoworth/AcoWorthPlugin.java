@@ -70,7 +70,7 @@ public class AcoWorthPlugin extends JavaPlugin {
             logger.info("AuctionHouse was found! Using AuctionHouse.");
         }
 
-        if (!buildOptionalSnowgears) {
+        if (buildOptionalSnowgears) {
             Plugin gearsShop = plManager.getPlugin("Shop");
             if (gearsShop instanceof com.snowgears.shop.Shop) {
                 plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);

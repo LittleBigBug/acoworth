@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc1731ff-1f67-46fb-9c35-9540da3a09ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/Hibernate.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/AcoWorthPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/AcoWorthPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/AuctionHouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/yasfu/acoworth/ShopListeners/AuctionHouseListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,12 @@
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="1.14-compat" />
+        <option value="build-with-snowgears-shop" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1W8wGWCPHdLSOr96KCbfTpTl0K0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -59,7 +66,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.excludes" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -77,9 +84,13 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn install:install-file -Dfile=lib/QuickShop-Reremake.3.0.8.1.jar -DgroupId=org.maxgamer -DartifactId=quickshop -Dversion=3.0.8.1 -Dpackaging=jar " />
-      <command value="mvn install:install-file -Dfile=lib/Shop.jar -DgroupId=com.snowgears -DartifactId=shop -Dversion=1.8.1 -Dpackaging=jar " />
       <command value="mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk \     -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar" />
       <command value="mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk  -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=lib/Shop-SnowGears.jar -DgroupId=com.spawnchunk -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=lib/QuickShop-Reremake.3.0.8.1.jar -DgroupId=org.maxgamer -DartifactId=quickshop -Dversion=3.0.8.1 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk -DartifactId=auctionhouse -Dversion=1.8.1 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar" />
+      <command value="mvn install:install-file -Dfile=lib/Shop.jar -DgroupId=com.snowgears -DartifactId=shop -Dversion=1.8.1 -Dpackaging=jar " />
     </option>
   </component>
   <component name="ServiceViewManager">
@@ -112,6 +123,8 @@
       <workItem from="1583559489240" duration="4288000" />
       <workItem from="1583703861001" duration="5420000" />
       <workItem from="1583975397900" duration="1288000" />
+      <workItem from="1584026569909" duration="231000" />
+      <workItem from="1584026811747" duration="391000" />
     </task>
     <servers />
   </component>
@@ -123,10 +136,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="874" y="359" key="#Deployment/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583509277186" />
-    <state x="555" y="172" width="924" height="672" key="#Project_Structure" timestamp="1583556162585">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="740" y="232" width="924" height="672" key="#Project_Structure" timestamp="1584026603374">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="555" y="172" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583556162585" />
+    <state x="740" y="232" key="#Project_Structure/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584026603374" />
     <state x="1835" y="179" width="924" height="672" key="#Project_Structure/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578624623544" />
     <state x="1835" y="179" width="800" height="672" key="#SQL_Dialects" timestamp="1578631505739">
       <screen x="1280" y="0" width="1920" height="1080" />
@@ -148,50 +162,52 @@
       <screen x="1280" y="0" width="1920" height="1080" />
     </state>
     <state x="1929" y="162" width="624" height="700" key="#com.intellij.unscramble.UnscrambleDialog/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578977474004" />
-    <state x="681" y="200" key="FileChooserDialogImpl" timestamp="1583558021227">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="908" y="269" key="FileChooserDialogImpl" timestamp="1584026934504">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="681" y="200" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583558021227" />
-    <state width="1877" height="126" key="GridCell.Tab.0.bottom" timestamp="1583711223809">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="908" y="269" key="FileChooserDialogImpl/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584026934504" />
+    <state width="1259" height="400" key="GridCell.Tab.0.bottom" timestamp="1584027204733">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="126" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583711223809" />
-    <state width="2518" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794443" />
+    <state width="1259" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584027204733" />
     <state width="1878" height="167" key="GridCell.Tab.0.bottom/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state width="1877" height="126" key="GridCell.Tab.0.center" timestamp="1583711223808">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1259" height="400" key="GridCell.Tab.0.center" timestamp="1584027204733">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="126" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583711223808" />
-    <state width="2518" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794442" />
+    <state width="1259" height="400" key="GridCell.Tab.0.center/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584027204733" />
     <state width="1878" height="167" key="GridCell.Tab.0.center/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state width="1877" height="126" key="GridCell.Tab.0.left" timestamp="1583711223808">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1259" height="400" key="GridCell.Tab.0.left" timestamp="1584027204733">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="126" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583711223808" />
-    <state width="2518" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794442" />
+    <state width="1259" height="400" key="GridCell.Tab.0.left/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584027204733" />
     <state width="1878" height="167" key="GridCell.Tab.0.left/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state width="1877" height="126" key="GridCell.Tab.0.right" timestamp="1583711223808">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1259" height="400" key="GridCell.Tab.0.right" timestamp="1584027204733">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="126" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583711223808" />
-    <state width="2518" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583515794442" />
+    <state width="1259" height="400" key="GridCell.Tab.0.right/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584027204733" />
     <state width="1878" height="167" key="GridCell.Tab.0.right/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578982724886" />
-    <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1583561331485">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="653" y="236" key="Maven.ArtifactSearchDialog" timestamp="1584026113687">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="490" y="175" key="Maven.ArtifactSearchDialog/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583561331485" />
-    <state x="278" y="115" width="916" height="708" key="SettingsEditor" timestamp="1583559289443">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="653" y="236" key="Maven.ArtifactSearchDialog/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584026113687" />
+    <state x="591" y="123" width="916" height="708" key="SettingsEditor" timestamp="1584026951220">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="278" y="115" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583559289443" />
-    <state x="591" y="123" key="SettingsEditor/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583511014929" />
+    <state x="591" y="123" key="SettingsEditor/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584026951220" />
     <state x="1723" y="95" width="1024" height="840" key="SettingsEditor/1280.0.1920.1080/0.0.1280.984/3200.0.1920.1080@1280.0.1920.1080" timestamp="1578981800429" />
-    <state x="643" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1583975398542">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="857" y="467" key="com.intellij.ide.util.TipDialog" timestamp="1584026849274">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="643" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583975398542" />
     <state x="643" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578950513383" />
-    <state x="857" y="467" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583509520194" />
+    <state x="857" y="467" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584026849274" />
     <state x="848" y="336" width="863" height="672" key="find.popup" timestamp="1583515601302">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -202,10 +218,11 @@
     </state>
     <state x="529" y="238" key="new project wizard/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583976433137" />
     <state x="705" y="321" key="new project wizard/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1583509537521" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1583662199967">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="834" y="336" width="896" height="912" key="run.anything.popup" timestamp="1584026740216">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040/-1280.50.1280.984@0.0.1920.1040" timestamp="1583662199967" />
+    <state x="834" y="336" width="896" height="912" key="run.anything.popup/0.0.2560.1400/5120.0.1920.1160@0.0.2560.1400" timestamp="1584026740216" />
     <state x="840" y="304" width="896" height="880" key="search.everywhere.popup" timestamp="1583510226025">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

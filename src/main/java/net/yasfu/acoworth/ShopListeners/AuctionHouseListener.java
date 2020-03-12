@@ -11,7 +11,6 @@ import net.yasfu.acoworth.AcoWorthPlugin;
 import com.spawnchunk.auctionhouse.events.AuctionItemEvent;
 
 public class AuctionHouseListener implements Listener {
-
     AcoWorthPlugin plugin;
 
     public AuctionHouseListener(AcoWorthPlugin pl) {
