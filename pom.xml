@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.15.1-R0.1-SNAPSHOT</version>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -151,10 +151,6 @@
                     </plugin>
                 </plugins>
             </build>
-
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
         </profile>
 
         <profile>
@@ -164,6 +160,10 @@
                 <spigot-version>1.14</spigot-version>
             </properties>
 
+            <build>
+                <finalName>${project.name}-1.14-compat-${project.version}</finalName>
+            </build>
+
             <dependencies>
                 <dependency>
                     <groupId>org.spigotmc</groupId>
@@ -172,10 +172,35 @@
                     <scope>provided</scope>
                 </dependency>
             </dependencies>
+        </profile>
 
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
+        <profile>
+            <id>developer-delete-old-target-jar</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.8</version>
+                        <executions>
+                            <execution>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <delete>
+                                            <fileset dir="${project.basedir}/target" includes="*.jar" />
+                                        </delete>
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
