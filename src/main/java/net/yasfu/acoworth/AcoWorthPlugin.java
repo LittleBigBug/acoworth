@@ -20,9 +20,18 @@ public class AcoWorthPlugin extends JavaPlugin {
     public static AcoWorthPlugin singleton;
 
     private static final boolean buildOptionalSnowgears = isSnowgearsPresent();
+    private static final boolean buildOptionalQuantum = isQuantumPresent();
     private static boolean isSnowgearsPresent() {
         try {
             Class.forName("com.snowgears.shop.Shop");
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+    private static boolean isQuantumPresent() {
+        try {
+            Class.forName("su.nightexpress.quantumshop.QuantumShop");
             return true;
         } catch (Exception ex) {
             return false;
@@ -75,6 +84,14 @@ public class AcoWorthPlugin extends JavaPlugin {
             if (gearsShop instanceof com.snowgears.shop.Shop) {
                 plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
                 logger.info("Snowgears' Shop was found! Using Shop.");
+            }
+        }
+
+        if (buildOptionalQuantum) {
+            Plugin quantumShop = plManager.getPlugin("QuantumShop");
+            if (quantumShop instanceof su.nightexpress.quantumshop.QuantumShop) {
+                plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.QuantumshopListener(this), this);
+                logger.info("QuantumShop was found! Using QuantumShop.");
             }
         }
     }

@@ -6,7 +6,7 @@
 
     <groupId>net.yasfu</groupId>
     <artifactId>AcoWorth</artifactId>
-    <version>1.4.1</version>
+    <version>1.5.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,23 +69,20 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>net/yasfu/acoworth/ShopListeners/</directory>
-                            <excludes>
-                                <exclude>SnowgearsListener.java</exclude>
-                            </excludes>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                    </filesets>
+                    <includes>
+                        <include>**/net/yasfu/acoworth/*</include>
+                    </includes>
+                    <testIncludes>
+                        <include>**/net/yasfu/acoworth/*</include>
+                    </testIncludes>
+                    <excludes>
+                        <exclude>**/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java</exclude>
+                        <exclude>**/net/yasfu/acoworth/ShopListeners/QuantumshopListener.java</exclude>
+                    </excludes>
+                    <testExcludes>
+                        <exclude>**/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java</exclude>
+                        <exclude>**/net/yasfu/acoworth/ShopListeners/QuantumshopListener.java</exclude>
+                    </testExcludes>
                 </configuration>
             </plugin>
         </plugins>
@@ -118,6 +115,45 @@
                     <artifactId>shop</artifactId>
                     <version>1.8.1</version>
                     <scope>provided</scope>
+                    <optional>true</optional>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.8.0</version>
+                        <configuration>
+                            <includes>
+                                <exclude>**/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java</exclude>
+                            </includes>
+                            <testIncludes>
+                                <exclude>**/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java</exclude>
+                            </testIncludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>build-with-quantum-shop</id>
+
+            <dependencies>
+                <dependency>
+                    <groupId>su.nightexpress</groupId>
+                    <artifactId>quantumshop</artifactId>
+                    <version>3.6.8</version>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>su.fogus</groupId>
+                    <artifactId>core</artifactId>
+                    <version>1.9.0</version>
+                    <scope>provided</scope>
                 </dependency>
             </dependencies>
 
@@ -130,27 +166,20 @@
                         <configuration>
                             <source>1.8</source>
                             <target>1.8</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-clean-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <configuration>
-                            <filesets>
-                                <fileset>
-                                    <directory>net/yasfu/acoworth/ShopListeners/</directory>
-                                    <includes>
-                                        <include>SnowgearsListener.java</include>
-                                    </includes>
-                                    <followSymlinks>false</followSymlinks>
-                                </fileset>
-                            </filesets>
+                            <includes>
+                                <exclude>**/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java</exclude>
+                            </includes>
+                            <testIncludes>
+                                <exclude>**/net/yasfu/acoworth/ShopListeners/SnowgearsListener.java</exclude>
+                            </testIncludes>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
+
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
         </profile>
 
         <profile>

@@ -23,3 +23,7 @@ standardDeviationMuiltiplier: 1.0
 # Enable AuctionHouse support (if it exists)
 # AuctionHouse isn't affected by trackSaleTypes
 enableAuction: true
+
+# Quantumshop admin shop
+# Enable this to track admin shop sales in Quantum GUI Shop (Requested)
+quantumShopAdminShop: false

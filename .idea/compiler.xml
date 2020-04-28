@@ -10,5 +10,8 @@
         <module name="acoworth" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="acoworth-quantumshop" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
