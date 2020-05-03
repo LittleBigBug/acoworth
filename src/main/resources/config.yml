@@ -21,9 +21,22 @@ trackSaleTypes: BUY
 standardDeviationMuiltiplier: 1.0
 
 # Enable AuctionHouse support (if it exists)
-# AuctionHouse isn't affected by trackSaleTypes
+# OR CrazyAuctions support
+# Auctions ARE NOT affected by trackSaleTypes
 enableAuction: true
+
+# Enable logging winning bids from CrazyAuction (if it exists)
+enableCrazyAuctionBids: true
 
 # Quantumshop admin shop
 # Enable this to track admin shop sales in Quantum GUI Shop (Requested)
 quantumShopAdminShop: false
+
+# How data in AcoWorth is gonna be stored
+storage:
+  useMySQL: false # If you don't use MySQL, SQLite will be default (local)
+  credentials:
+    address: "127.0.0.1:3306" # Address:Port
+    username: "root"
+    password: "omegaSecurePassword1337"
+    database: "my_database"

@@ -6,7 +6,7 @@
 
     <groupId>net.yasfu</groupId>
     <artifactId>AcoWorth</artifactId>
-    <version>1.5.0</version>
+    <version>1.5.2</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,6 +25,10 @@
         <repository>
             <id>local-repo</id>
             <url>file://${project.basedir}/libs</url>
+        </repository>
+        <repository>
+            <id>nexus</id>
+            <url>https://nexus.badbones69.com/repository/maven-releases/</url>
         </repository>
     </repositories>
 
@@ -74,6 +78,11 @@
             <groupId>com.snowgears</groupId>
             <artifactId>shop</artifactId>
             <version>1.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>me.badbones69</groupId>
+            <artifactId>crazyauctions</artifactId>
+            <version>1.2.12</version>
         </dependency>
     </dependencies>
 

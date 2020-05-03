@@ -8,8 +8,11 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import com.snowgears.shop.Shop;
 import com.Acrobot.ChestShop.ChestShop;
 import org.maxgamer.quickshop.QuickShop;
+import me.badbones69.crazyauctions.Main;
+import su.nightexpress.quantumshop.QuantumShop;
 import com.spawnchunk.auctionhouse.AuctionHouse;
 import net.yasfu.acoworth.ShopListeners.ChestshopListener;
 import net.yasfu.acoworth.ShopListeners.QuickshopListener;
@@ -61,15 +64,21 @@ public class AcoWorthPlugin extends JavaPlugin {
         }
 
         Plugin gearsShop = plManager.getPlugin("Shop");
-        if (gearsShop != null && gearsShop.getClass().getPackageName() == "com.snowgears.shop") {
+        if (gearsShop instanceof Shop) {
             plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
             logger.info("Snowgears' Shop was found! Using Shop.");
         }
 
         Plugin quantumShop = plManager.getPlugin("QuantumShop");
-        if (quantumShop != null && quantumShop.getClass().getPackageName() == "su.nightexpress.quantumshop") {
+        if (quantumShop instanceof QuantumShop) {
             plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.QuantumshopListener(this), this);
             logger.info("QuantumShop was found! Using QuantumShop.");
+        }
+
+        Plugin crazyAuctions = plManager.getPlugin("CrazyAuctions");
+        if (crazyAuctions instanceof Main) {
+            plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.CrazyAuctionsListener(this), this);
+            logger.info("CrazyAuctions was found! Using CrazyAuctions.");
         }
     }
 

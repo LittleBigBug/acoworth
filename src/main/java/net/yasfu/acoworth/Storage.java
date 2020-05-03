@@ -2,7 +2,10 @@ package net.yasfu.acoworth;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class Storage {
 
@@ -10,8 +13,25 @@ public class Storage {
 
     public static void connect() {
         try {
+            FileConfiguration cfg = AcoWorthPlugin.singleton.getConfig();
+            boolean mysql = cfg.getBoolean("storage.useMySQL");
+
             String url = "jdbc:sqlite:plugins/AcoWorth/acoworth.db";
-            conn = DriverManager.getConnection(url);
+
+            String user = "";
+            String pass = "";
+
+            if (mysql) {
+                String address = cfg.getString("storage.credentials.address");
+                String db = cfg.getString("storage.credentials.database");
+
+                user = cfg.getString("storage.credentials.username");
+                pass = cfg.getString("storage.credentials.password");
+
+                url = "jdbc:mysql://" + address + "/" + db;
+            }
+
+            conn = DriverManager.getConnection(url, user, pass);
 
             checkTables();
         } catch (SQLException e) {
@@ -32,16 +52,25 @@ public class Storage {
             Statement st = conn.createStatement();
             st.setQueryTimeout(30);
 
+            FileConfiguration cfg = AcoWorthPlugin.singleton.getConfig();
+            boolean mysql = cfg.getBoolean("storage.useMySQL");
+
+            String autoInc = ""; // SQLite doesn't need auto_increment (primary key tells em that)
+
+            if (mysql) {
+                autoInc = "AUTO_INCREMENT";
+            }
+
             st.executeUpdate("CREATE TABLE IF NOT EXISTS " +
                     "sales (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "mc_material VARCHAR(255) NOT NULL, " +
+                    "id INTEGER PRIMARY KEY " + autoInc + ", " +
+                    "mc_material VARCHAR(150) NOT NULL, " +
                     "sale_amt DOUBLE NOT NULL)");
 
             st.executeUpdate("CREATE TABLE IF NOT EXISTS " +
                     "worth (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "mc_material VARCHAR(255) NOT NULL UNIQUE, " +
+                    "id INTEGER PRIMARY KEY " + autoInc + ", " +
+                    "mc_material VARCHAR(150) NOT NULL UNIQUE, " +
                     "lastWorth DOUBLE NOT NULL, " +
                     "needsUpdate TINYINT(1) NOT NULL DEFAULT 0)");
         } catch (SQLException e) {
@@ -59,9 +88,21 @@ public class Storage {
             String matName = mat.toString();
 
             st.executeUpdate("INSERT INTO sales (mc_material, sale_amt) VALUES ('" + matName + "', '" + pricePer + "')");
-            st.executeUpdate("DELETE FROM sales WHERE id NOT IN " +
-                    "(SELECT id FROM sales WHERE mc_material = '" + matName + "' ORDER BY id DESC LIMIT " + fileCap + ") " +
-                    "AND mc_material = '" + matName + "'");
+
+            ResultSet ids =  st.executeQuery("SELECT id FROM sales WHERE mc_material = '" + matName + "' ORDER BY id DESC LIMIT " + fileCap);
+            String csvIDs = ""; // Hacky solution for older MySQL / MariaDB servers
+
+            while (ids.next()) {
+                int id = ids.getInt("id");
+
+                if (!ids.isFirst()) {
+                    csvIDs += ",";
+                }
+
+                csvIDs += Integer.toString(id);
+            }
+
+            st.executeUpdate("DELETE FROM sales WHERE id NOT IN (" + csvIDs + ") AND mc_material = '" + matName + "'");
             st.executeUpdate("UPDATE worth SET needsUpdate = 1 WHERE mc_material = '" + matName + "'");
         } catch (SQLException e) {
             AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
@@ -132,7 +173,8 @@ public class Storage {
             avgSt3 /= st3Values.size();
             avgSt3 = Math.sqrt(avgSt3);
 
-            double multiplier = AcoWorthPlugin.singleton.getConfig().getDouble("standardDeviationMuiltiplier");
+            FileConfiguration cfg = AcoWorthPlugin.singleton.getConfig();
+            double multiplier = cfg.getDouble("standardDeviationMuiltiplier");
 
             avgSt3 *= multiplier;
 
@@ -156,9 +198,15 @@ public class Storage {
             finalAvg /= used;
 
             worth = finalAvg;
+            boolean mysql = cfg.getBoolean("storage.useMySQL");
 
             st = conn.createStatement();
-            st.executeUpdate("INSERT OR REPLACE INTO worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0)");
+
+            if (mysql) {
+                st.executeUpdate("INSERT INTO worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0) ON DUPLICATE KEY UPDATE lastworth = '" + worth + "', needsUpdate = 0");
+            } else {
+                st.executeUpdate("INSERT OR REPLACE INTO worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0)");
+            }
 
             long timeEnd = System.currentTimeMillis();
             long diff = timeEnd - timeStart;

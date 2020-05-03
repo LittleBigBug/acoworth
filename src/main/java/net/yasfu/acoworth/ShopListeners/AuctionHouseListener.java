@@ -1,5 +1,6 @@
 package net.yasfu.acoworth.ShopListeners;
 
+import me.badbones69.crazyauctions.api.events.AuctionWinBidEvent;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
@@ -24,14 +25,27 @@ public class AuctionHouseListener implements Listener {
         if (!enabled) { return; }
 
         ItemStack item = aucEvent.getItem();
+        double price = aucEvent.getPrice();
+        addSale(item, price);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    private void onAuctionBidWin(AuctionWinBidEvent aucEvent) {
+        FileConfiguration cfg = plugin.getConfig();
+        boolean enabled = cfg.getBoolean("enableCrazyAuctionBids");
+        if (!enabled) { return; }
+
+        ItemStack item = aucEvent.getItem();
+        double price = aucEvent.getBid();
+        addSale(item, price);
+    }
+
+    private void addSale(ItemStack item, double price) {
         Material mat = item.getType();
-
         int itemCount = item.getAmount();
+        price /= itemCount;
 
-        double cost = aucEvent.getPrice();
-        cost /= itemCount;
-
-        Storage.addSale(mat, cost);
+        Storage.addSale(mat, price);
     }
 
 }

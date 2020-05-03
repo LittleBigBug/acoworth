@@ -15,8 +15,19 @@ public class AcoWorthCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
-        if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
+        if (args.length == 0) {
+            sender.sendMessage(ChatColor.DARK_AQUA + "Running AcoWorth v" + plugin.getDescription().getVersion() + "! The only subcommand is " + ChatColor.WHITE + " /aw reload " + ChatColor.DARK_AQUA + " for now");
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("reload")) {
+            // reload cfg
             plugin.reloadConfig();
+
+            // Redo connection
+            Storage.disconnect();
+            Storage.connect();
+
             sender.sendMessage(ChatColor.DARK_AQUA + "AcoWorth v" + plugin.getDescription().getVersion() + " has been reloaded.");
             return true;
         }
