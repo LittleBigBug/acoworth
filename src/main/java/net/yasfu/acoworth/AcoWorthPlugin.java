@@ -19,25 +19,6 @@ public class AcoWorthPlugin extends JavaPlugin {
 
     public static AcoWorthPlugin singleton;
 
-    private static final boolean buildOptionalSnowgears = isSnowgearsPresent();
-    private static final boolean buildOptionalQuantum = isQuantumPresent();
-    private static boolean isSnowgearsPresent() {
-        try {
-            Class.forName("com.snowgears.shop.Shop");
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-    private static boolean isQuantumPresent() {
-        try {
-            Class.forName("su.nightexpress.quantumshop.QuantumShop");
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-
     @Override
     public void onEnable() {
         String version = getDescription().getVersion();
@@ -79,20 +60,16 @@ public class AcoWorthPlugin extends JavaPlugin {
             logger.info("AuctionHouse was found! Using AuctionHouse.");
         }
 
-        if (buildOptionalSnowgears) {
-            Plugin gearsShop = plManager.getPlugin("Shop");
-            if (gearsShop instanceof com.snowgears.shop.Shop) {
-                plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
-                logger.info("Snowgears' Shop was found! Using Shop.");
-            }
+        Plugin gearsShop = plManager.getPlugin("Shop");
+        if (gearsShop != null && gearsShop.getClass().getPackageName() == "com.snowgears.shop") {
+            plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.SnowgearsListener(this), this);
+            logger.info("Snowgears' Shop was found! Using Shop.");
         }
 
-        if (buildOptionalQuantum) {
-            Plugin quantumShop = plManager.getPlugin("QuantumShop");
-            if (quantumShop instanceof su.nightexpress.quantumshop.QuantumShop) {
-                plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.QuantumshopListener(this), this);
-                logger.info("QuantumShop was found! Using QuantumShop.");
-            }
+        Plugin quantumShop = plManager.getPlugin("QuantumShop");
+        if (quantumShop != null && quantumShop.getClass().getPackageName() == "su.nightexpress.quantumshop") {
+            plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.QuantumshopListener(this), this);
+            logger.info("QuantumShop was found! Using QuantumShop.");
         }
     }
 

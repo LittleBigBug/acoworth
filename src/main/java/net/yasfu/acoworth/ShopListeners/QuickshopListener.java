@@ -9,9 +9,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.configuration.file.FileConfiguration;
 import net.yasfu.acoworth.Storage;
 import net.yasfu.acoworth.AcoWorthPlugin;
-import org.maxgamer.quickshop.Shop.Shop;
-import org.maxgamer.quickshop.Shop.ShopType;
-import org.maxgamer.quickshop.Event.ShopSuccessPurchaseEvent;
+import org.maxgamer.quickshop.shop.Shop;
+import org.maxgamer.quickshop.shop.ShopType;
+import org.maxgamer.quickshop.event.ShopSuccessPurchaseEvent;
 
 /*
 QuickShop Reremake
@@ -42,17 +42,9 @@ public class QuickshopListener implements Listener {
             type = "BUY";
         }
 
-        switch (type) {
-            case "BUY":
-                if (shopType == ShopType.BUYING) { // this is if the SHOP is buying, not the player.
-                    return;
-                }
-                break;
-            case "SELL":
-                if (shopType == ShopType.SELLING) { // this is if the SHOP is selling, not the player.
-                    return;
-                }
-                break;
+        if ((type.equals("BUY") && shopType == ShopType.BUYING)
+                || (type.equals("SELL") && shopType == ShopType.SELLING)) {// this is if the SHOP is buying, not the player.
+            return;
         }
 
         ItemStack item = shop.getItem();

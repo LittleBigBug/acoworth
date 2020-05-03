@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import net.yasfu.acoworth.AcoWorthPlugin;
 import su.nightexpress.quantumshop.modules.list.chestshop.events.ChestShopBuyEvent;
 import su.nightexpress.quantumshop.modules.list.chestshop.events.ChestShopSellEvent;
+import su.nightexpress.quantumshop.modules.list.chestshop.objects.ShopChest;
 import su.nightexpress.quantumshop.modules.list.gui.objects.ShopProduct;
 import su.nightexpress.quantumshop.modules.list.gui.objects.PreparedProduct;
 import su.nightexpress.quantumshop.modules.list.gui.events.GUIShopBuyItemEvent;
@@ -75,7 +76,11 @@ public class QuantumshopListener implements Listener {
             return;
         }
 
-        addQuantumSale(buyEvent.getShop().getProductWithAmount(), buyEvent.getPrice());
+        ShopChest shop = buyEvent.getShop();
+        double price = shop.getBuyPrice();
+        ItemStack stack = shop.getProductWithAmount();
+
+        addQuantumSale(stack, price);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -87,26 +92,26 @@ public class QuantumshopListener implements Listener {
             return;
         }
 
-        addQuantumSale(sellEvent.getShop().getProductWithAmount(), sellEvent.getPrice());
+        ShopChest shop = sellEvent.getShop();
+        double price = shop.getSellPrice();
+        ItemStack stack = shop.getProductWithAmount();
+
+        addQuantumSale(stack, price);
     }
 
-    private void addQuantumSale(ItemStack stack, double totalPrice) {
+    private void addQuantumSale(ItemStack stack, double price) {
         Material mat = stack.getType();
-
-        double price = totalPrice;
-        price /= stack.getAmount();
-
-        plugin.getLogger().log(" a "+ stack.getAmount());
-
+        plugin.getLogger().info(price + "");
         Storage.addSale(mat, price);
     }
 
-    private void addQuantumSale(PreparedProduct item, double totalPrice) {
+    private void addQuantumSale(PreparedProduct item, double price) {
         ShopProduct shopProduct = item.getShopItem();
         ItemStack stack = shopProduct.getBuyItem();
-        stack.setAmount(item.getAmount());
 
-        addQuantumSale(stack, totalPrice);
+        price /= item.getAmount();
+
+        addQuantumSale(stack, price);
     }
 
 }
