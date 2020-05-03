@@ -26,15 +26,15 @@ AcoWorth uses Maven for handling most dependencies automatically. I use Jetbrain
 Quickshop Reremake does not have a maven repository so you must add the jar to the local maven repository. Either use the Quickshop Reremake .jar in /lib or a version of your choice with this maven command:
 
 ```
-mvn install:install-file -Dfile=lib/QuickShop-Reremake.3.0.8.1.jar -DgroupId=org.maxgamer \
-    -DartifactId=quickshop -Dversion=3.0.8.1 -Dpackaging=jar
+mvn install:install-file -Dfile=lib/QuickShop-4.0.2.5.jar -DgroupId=org.maxgamer \
+    -DartifactId=quickshop -Dversion=4.0.2.5 -Dpackaging=jar
 ```
 
 To build with QuantumShop you need to check the new build-with-quantum-shop profile in maven. You also need a copy of the plugin's jar in order to build, since the plugin is premium the jar is not allowed to be distributed on this repository. Perform the same maven command for Quickshop for Quantumshop to add it to the local maven repository as well. Quantum shop's group name is `su.nightexpress`. The oldest version you can build against is v3.6.8. You do have to build with FogusCore.
 
 ```
 mvn install:install-file -Dfile=lib/QuantumShop.jar -DgroupId=su.nightexpress \
-    -DartifactId=quantumshop -Dversion=3.6.8 -Dpackaging=jar
+    -DartifactId=quantumshop -Dversion=3.7.2 -Dpackaging=jar
 
 mvn install:install-file -Dfile=lib/FogusCore.jar -DgroupId=su.fogus \
     -DartifactId=core -Dversion=1.9.0 -Dpackaging=jar
@@ -51,9 +51,7 @@ mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnch
 
 Currently there is a loose implementation to support SnowGear's Premium Shop plugin (see [#2](https://github.com/LittleBigBug/acoworth/issues/2)). Obviously due to this plugin being premium I cannot include a jar in source, and not everyone who wants to compile has access to the plugin.
 
-AcoWorth's maven project contains a profile called `build-with-snowgears-shop` and will not try to add snowgears as a dependency and will not load or compile the listener class. Sometimes using maven build packaging fails without Snowgears shop and the build snowgears shop profile disabled, `net.yasfu.acoworth/ShopListeners/SnowgearsListener.java` will also have syntax errors in the IDE. First run the "compile" goal/lifecycle before the package goal/lifecycle like shown below. 
-
-If that doesn't work, just delete the SnowgearsListener.java class and the references to it in AcoWorthPlugin.java
+There are a couple of dependencies which have not been included due to the fact they are premium plugins. If you are building this yourself and you don't own these plugins, you may have to remove the listener class and the references to it in the main plugin class. After that it should build cleanly.
 
 Build the maven project with the package goal/lifecycle and the AcoWorth jar will be built in `target/`
 
