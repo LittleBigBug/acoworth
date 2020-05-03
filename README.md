@@ -30,7 +30,7 @@ mvn install:install-file -Dfile=lib/QuickShop-4.0.2.5.jar -DgroupId=org.maxgamer
     -DartifactId=quickshop -Dversion=4.0.2.5 -Dpackaging=jar
 ```
 
-To build with QuantumShop you need to check the new build-with-quantum-shop profile in maven. You also need a copy of the plugin's jar in order to build, since the plugin is premium the jar is not allowed to be distributed on this repository. Perform the same maven command for Quickshop for Quantumshop to add it to the local maven repository as well. Quantum shop's group name is `su.nightexpress`. The oldest version you can build against is v3.6.8. You do have to build with FogusCore.
+To build with QuantumShop you need a copy of the plugin's jar in order to build, since the plugin is premium the jar is not allowed to be distributed on this repository. Perform the same maven command for Quickshop for Quantumshop to add it to the local maven repository as well. Quantum shop's group name is `su.nightexpress`. The oldest version you can build against is v3.6.8. You do have to build with FogusCore.
 
 ```
 mvn install:install-file -Dfile=lib/QuantumShop.jar -DgroupId=su.nightexpress \
