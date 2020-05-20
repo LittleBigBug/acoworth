@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class Storage {
 
     public static Connection conn;
+    public static String tablePrefix = "";
 
     public static void connect() {
         try {
@@ -27,6 +28,8 @@ public class Storage {
 
                 user = cfg.getString("storage.credentials.username");
                 pass = cfg.getString("storage.credentials.password");
+
+                tablePrefix = cfg.getString("storage.tablePrefix");
 
                 url = "jdbc:mysql://" + address + "/" + db;
             }
@@ -48,11 +51,13 @@ public class Storage {
     }
 
     public static void checkTables() {
+        FileConfiguration cfg = AcoWorthPlugin.singleton.getConfig();
+        tablePrefix = cfg.getString("storage.tablePrefix");
+
         try {
             Statement st = conn.createStatement();
             st.setQueryTimeout(30);
 
-            FileConfiguration cfg = AcoWorthPlugin.singleton.getConfig();
             boolean mysql = cfg.getBoolean("storage.useMySQL");
 
             String autoInc = ""; // SQLite doesn't need auto_increment (primary key tells em that)
@@ -62,13 +67,13 @@ public class Storage {
             }
 
             st.executeUpdate("CREATE TABLE IF NOT EXISTS " +
-                    "sales (" +
+                    tablePrefix + "sales (" +
                     "id INTEGER PRIMARY KEY " + autoInc + ", " +
                     "mc_material VARCHAR(150) NOT NULL, " +
                     "sale_amt DOUBLE NOT NULL)");
 
             st.executeUpdate("CREATE TABLE IF NOT EXISTS " +
-                    "worth (" +
+                    tablePrefix + "worth (" +
                     "id INTEGER PRIMARY KEY " + autoInc + ", " +
                     "mc_material VARCHAR(150) NOT NULL UNIQUE, " +
                     "lastWorth DOUBLE NOT NULL, " +
@@ -87,9 +92,9 @@ public class Storage {
 
             String matName = mat.toString();
 
-            st.executeUpdate("INSERT INTO sales (mc_material, sale_amt) VALUES ('" + matName + "', '" + pricePer + "')");
+            st.executeUpdate("INSERT INTO " + tablePrefix + "sales (mc_material, sale_amt) VALUES ('" + matName + "', '" + pricePer + "')");
 
-            ResultSet ids =  st.executeQuery("SELECT id FROM sales WHERE mc_material = '" + matName + "' ORDER BY id DESC LIMIT " + fileCap);
+            ResultSet ids =  st.executeQuery("SELECT id FROM " + tablePrefix + "sales WHERE mc_material = '" + matName + "' ORDER BY id DESC LIMIT " + fileCap);
             String csvIDs = ""; // Hacky solution for older MySQL / MariaDB servers
 
             while (ids.next()) {
@@ -102,8 +107,8 @@ public class Storage {
                 csvIDs += Integer.toString(id);
             }
 
-            st.executeUpdate("DELETE FROM sales WHERE id NOT IN (" + csvIDs + ") AND mc_material = '" + matName + "'");
-            st.executeUpdate("UPDATE worth SET needsUpdate = 1 WHERE mc_material = '" + matName + "'");
+            st.executeUpdate("DELETE FROM " + tablePrefix + "sales WHERE id NOT IN (" + csvIDs + ") AND mc_material = '" + matName + "'");
+            st.executeUpdate("UPDATE " + tablePrefix + "worth SET needsUpdate = 1 WHERE mc_material = '" + matName + "'");
         } catch (SQLException e) {
             AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
         }
@@ -117,7 +122,7 @@ public class Storage {
             st.setQueryTimeout(30);
 
             String matName = mat.toString();
-            ResultSet rs = st.executeQuery("SELECT * FROM sales WHERE mc_material = '" + matName + "'");
+            ResultSet rs = st.executeQuery("SELECT * FROM " + tablePrefix + "sales WHERE mc_material = '" + matName + "'");
 
             ArrayList<Double> values = new ArrayList<Double>();
 
@@ -126,7 +131,7 @@ public class Storage {
             }
 
             st = conn.createStatement();
-            ResultSet rsWorthCache = st.executeQuery("SELECT * FROM worth WHERE mc_material = '" + matName + "'");
+            ResultSet rsWorthCache = st.executeQuery("SELECT * FROM " + tablePrefix + "worth WHERE mc_material = '" + matName + "'");
 
             double lastWorth = 0;
             boolean needsUpdate = true;
@@ -203,9 +208,9 @@ public class Storage {
             st = conn.createStatement();
 
             if (mysql) {
-                st.executeUpdate("INSERT INTO worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0) ON DUPLICATE KEY UPDATE lastworth = '" + worth + "', needsUpdate = 0");
+                st.executeUpdate("INSERT INTO " + tablePrefix + "worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0) ON DUPLICATE KEY UPDATE lastworth = '" + worth + "', needsUpdate = 0");
             } else {
-                st.executeUpdate("INSERT OR REPLACE INTO worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0)");
+                st.executeUpdate("INSERT OR REPLACE INTO " + tablePrefix + "worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0)");
             }
 
             long timeEnd = System.currentTimeMillis();

@@ -10,11 +10,13 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.snowgears.shop.Shop;
 import com.Acrobot.ChestShop.ChestShop;
+import de.epiceric.shopchest.ShopChest;
 import org.maxgamer.quickshop.QuickShop;
 import me.badbones69.crazyauctions.Main;
 import su.nightexpress.quantumshop.QuantumShop;
 import com.spawnchunk.auctionhouse.AuctionHouse;
 import net.yasfu.acoworth.ShopListeners.ChestshopListener;
+import net.yasfu.acoworth.ShopListeners.ShopChestListener;
 import net.yasfu.acoworth.ShopListeners.QuickshopListener;
 import net.yasfu.acoworth.ShopListeners.AuctionHouseListener;
 
@@ -45,12 +47,18 @@ public class AcoWorthPlugin extends JavaPlugin {
         PluginManager plManager = srv.getPluginManager();
 
         Plugin chestShop = plManager.getPlugin("ChestShop");
+        Plugin shopChest = plManager.getPlugin("ShopChest");
         Plugin quickShop = plManager.getPlugin("QuickShop");
         Plugin auctionHouse = plManager.getPlugin("AuctionHouse");
 
         if (chestShop instanceof ChestShop) {
             plManager.registerEvents(new ChestshopListener(this), this);
             logger.info("ChestShop was found! Using ChestShop.");
+        }
+
+        if (shopChest instanceof ShopChest) {
+            plManager.registerEvents(new ShopChestListener(this), this);
+            logger.info("ShopChest was found! Using ShopChest.");
         }
 
         if (quickShop instanceof QuickShop) {
