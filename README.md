@@ -9,6 +9,7 @@ Supports SQLite and MySQL / MariaDB. (see the config)
 Currently, ChestShop and QuickShop Reremake are the only player shops supported at this time. If you would like to request a different plugin to be supported [please make an issue in the github issue tracker](https://github.com/LittleBigBug/acoworth/issues) and I'll get to it when I can.
 
 - [ChestShop-3](https://github.com/ChestShop-authors/ChestShop-3) | [[Spigot]](https://www.spigotmc.org/resources/chestshop.51856/)
+- [ShopChest](https://github.com/EpicEricEE/ShopChest) | [[Spigot]](https://www.spigotmc.org/resources/shopchest.11431/)
 - [QuickShop Reremake](https://github.com/Ghost-chu/QuickShop-Reremake) | [[Spigot]](https://www.spigotmc.org/resources/quickshop-reremake-1-15-ready-bees-bees-bee.62575/)
 - [QuantumShop (PREMIUM) [Spigot]](https://www.spigotmc.org/resources/quantumshop-1-13-1-15.50696/) 
 - [AuctionHouse [Spigot]](https://www.spigotmc.org/resources/auctionhouse.61836/)
