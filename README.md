@@ -6,7 +6,9 @@ This plugin is great for economy servers to easily allow players to compete in t
 
 Supports SQLite and MySQL / MariaDB. (see the config)
 
-Currently, ChestShop and QuickShop Reremake are the only player shops supported at this time. If you would like to request a different plugin to be supported [please make an issue in the github issue tracker](https://github.com/LittleBigBug/acoworth/issues) and I'll get to it when I can.
+If you would like to request a different plugin to be supported [please make an issue in the github issue tracker](https://github.com/LittleBigBug/acoworth/issues) and I'll get to it when I can.
+
+Here are the current supported shop/player sales plugins:
 
 - [ChestShop-3](https://github.com/ChestShop-authors/ChestShop-3) | [[Spigot]](https://www.spigotmc.org/resources/chestshop.51856/)
 - [ShopChest](https://github.com/EpicEricEE/ShopChest) | [[Spigot]](https://www.spigotmc.org/resources/shopchest.11431/)
