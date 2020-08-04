@@ -23,6 +23,10 @@
             <url>https://repo.minebench.de/</url>
         </repository>
         <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.io/</url>
+        </repository>
+        <repository>
             <id>local-repo</id>
             <url>file://${project.basedir}/libs</url>
         </repository>
@@ -51,8 +55,8 @@
         </dependency>
         <dependency>
             <groupId>org.maxgamer</groupId>
-            <artifactId>quickshop</artifactId>
-            <version>4.0.2.5</version>
+            <artifactId>QuickShop</artifactId>
+            <version>4.0.3.3</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

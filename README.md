@@ -24,14 +24,14 @@ Currently, ChestShop and QuickShop Reremake are the only player shops supported 
 
 AcoWorth uses Maven for handling most dependencies automatically. I use Jetbrains Intellij but any IDE that supports maven projects should work just as well.
 
-Quickshop Reremake does not have a maven repository so you must add the jar to the local maven repository. Either use the Quickshop Reremake .jar in /lib or a version of your choice with this maven command:
+Auction House does not have a maven repository so you must add the jar to the local maven repository. Either use the AuctionHouse .jar in /lib or a version of your choice with this maven command:
 
 ```
-mvn install:install-file -Dfile=lib/QuickShop-4.0.2.5.jar -DgroupId=org.maxgamer \
-    -DartifactId=quickshop -Dversion=4.0.2.5 -Dpackaging=jar
+mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk \
+    -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar
 ```
 
-To build with QuantumShop you need a copy of the plugin's jar in order to build, since the plugin is premium the jar is not allowed to be distributed on this repository. Perform the same maven command for Quickshop for Quantumshop to add it to the local maven repository as well. Quantum shop's group name is `su.nightexpress`. The oldest version you can build against is v3.6.8. You do have to build with FogusCore.
+To build with QuantumShop you need a copy of the plugin's jar in order to build, since the plugin is premium the jar is not allowed to be distributed on this repository. Perform the same maven command for AuctionHouse for Quantumshop to add it to the local maven repository as well. Quantum shop's group name is `su.nightexpress`. The oldest version you can build against is v3.6.8. You do have to build with FogusCore.
 
 ```
 mvn install:install-file -Dfile=lib/QuantumShop.jar -DgroupId=su.nightexpress \
@@ -41,14 +41,7 @@ mvn install:install-file -Dfile=lib/FogusCore.jar -DgroupId=su.fogus \
     -DartifactId=core -Dversion=1.9.0 -Dpackaging=jar
 ```
 
-Replace the filepath after -Dfile to the path of your QuickShop Plugin Jar
-
-The same applies for AuctionHouse:
-
-```
-mvn install:install-file -Dfile=lib/AuctionHouse-2.0.8.jar -DgroupId=com.spawnchunk \
-    -DartifactId=auctionhouse -Dversion=2.0.8 -Dpackaging=jar
-```
+Replace the filepath after -Dfile to the path of your Plugin Jar
 
 Currently there is a loose implementation to support SnowGear's Premium Shop plugin (see [#2](https://github.com/LittleBigBug/acoworth/issues/2)). Obviously due to this plugin being premium I cannot include a jar in source, and not everyone who wants to compile has access to the plugin.
 
