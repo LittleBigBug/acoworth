@@ -1,6 +1,5 @@
 package net.yasfu.acoworth.ShopListeners;
 
-import me.badbones69.crazyauctions.api.events.AuctionWinBidEvent;
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
@@ -30,7 +29,7 @@ public class AuctionHouseListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
-    private void onAuctionBidWin(AuctionWinBidEvent aucEvent) {
+    private void onAuctionBidWin(AuctionItemEvent aucEvent) {
         FileConfiguration cfg = plugin.getConfig();
         boolean enabled = cfg.getBoolean("enableCrazyAuctionBids");
         if (!enabled) { return; }

@@ -2,10 +2,11 @@ package net.yasfu.acoworth;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+
+import static org.bukkit.Bukkit.getServer;
 
 public class Storage {
 
@@ -39,6 +40,7 @@ public class Storage {
             checkTables();
         } catch (SQLException e) {
             AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
+            getServer().getPluginManager().disablePlugin(AcoWorthPlugin.singleton);
         }
     }
 

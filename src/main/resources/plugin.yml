@@ -2,7 +2,6 @@ name: AcoWorth
 description: Keeps track of item sales and calculates approximate worth for each.
 version: @version@
 main: net.yasfu.acoworth.AcoWorthPlugin
-api-version: @spigot-version@
 load: POSTWORLD
 author: LittleBigBug
 website: yasfu.net
