@@ -1,9 +1,11 @@
 package net.yasfu.acoworth;
 
 import java.io.File;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.Server;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -40,8 +42,16 @@ public class AcoWorthPlugin extends JavaPlugin {
         singleton = this;
         Storage.connect();
 
-        this.getCommand("worth").setExecutor(new WorthCommand(this));
-        this.getCommand("acoworth").setExecutor(new AcoWorthCommand(this));
+        PluginCommand worthCmd = this.getCommand("worth");
+        PluginCommand acoWorthCmd = this.getCommand("acoworth");
+
+        if (worthCmd == null || acoWorthCmd == null) {
+            logger.log(Level.SEVERE, "AcoWorth worth or acoworth command missing (??)");
+            return;
+        }
+
+        worthCmd.setExecutor(new WorthCommand(this));
+        acoWorthCmd.setExecutor(new AcoWorthCommand(this));
 
         Server srv = getServer();
         PluginManager plManager = srv.getPluginManager();
