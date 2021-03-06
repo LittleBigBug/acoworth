@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Server;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.event.HandlerList;
@@ -26,8 +27,14 @@ public class AcoWorthPlugin extends JavaPlugin {
 
     public static AcoWorthPlugin singleton;
 
+    public static Metrics metrics;
+
+    private static final int pluginId = 10573;
+
     @Override
     public void onEnable() {
+        new Metrics(this, pluginId);
+
         String version = getDescription().getVersion();
         Logger logger = getLogger();
 
