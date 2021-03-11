@@ -7,4 +7,4 @@ target/
 # Shop by snowgears and Quantum shop are paid plugins and I can't distribute it on github
 lib/Shop.jar
 lib/QuantumShop.jar
-lib/FogusCore.jar
+lib/NexEngine.jar
