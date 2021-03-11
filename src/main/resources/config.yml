@@ -35,6 +35,7 @@ quantumShopAdminShop: false
 # How data in AcoWorth is gonna be stored
 storage:
   useMySQL: false # If you don't use MySQL, SQLite will be default (local)
+  usePostgreSQL: false # If both MySQL and Postgre is true it will default to MySQL
   tablePrefix: "" # If you need to use a table prefix or prefer there one be used put one here
   credentials:
     address: "127.0.0.1:3306" # Address:Port

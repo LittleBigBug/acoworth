@@ -17,13 +17,14 @@ public class Storage {
         try {
             FileConfiguration cfg = AcoWorthPlugin.singleton.getConfig();
             boolean mysql = cfg.getBoolean("storage.useMySQL");
+            boolean pgsql = cfg.getBoolean("storage.usePostgreSQL");
 
             String url = "jdbc:sqlite:plugins/AcoWorth/acoworth.db";
 
             String user = "";
             String pass = "";
 
-            if (mysql) {
+            if (pgsql || mysql) {
                 String address = cfg.getString("storage.credentials.address");
                 String db = cfg.getString("storage.credentials.database");
 
@@ -32,7 +33,11 @@ public class Storage {
 
                 tablePrefix = cfg.getString("storage.tablePrefix");
 
-                url = "jdbc:mysql://" + address + "/" + db;
+                if (mysql) {
+                    url = "jdbc:mysql://" + address + "/" + db;
+                } else {
+                    url = "jdbc:postgresql://" + address + "/" + db;
+                }
             }
 
             conn = DriverManager.getConnection(url, user, pass);
@@ -61,24 +66,30 @@ public class Storage {
             st.setQueryTimeout(30);
 
             boolean mysql = cfg.getBoolean("storage.useMySQL");
+            boolean pgsql = cfg.getBoolean("storage.usePostgreSQL");
 
             String autoInc = ""; // SQLite doesn't need auto_increment (primary key tells em that)
+            String idType = "INTEGER"; // PostgreSQL uses a different type for auto increment
+            String dblType = ""; // PostgreSQL thing
 
             if (mysql) {
-                autoInc = "AUTO_INCREMENT";
+                autoInc = " AUTO_INCREMENT";
+            } else if (pgsql) {
+                idType = "SERIAL";
+                dblType = " PRECISION";
             }
 
             st.executeUpdate("CREATE TABLE IF NOT EXISTS " +
                     tablePrefix + "sales (" +
-                    "id INTEGER PRIMARY KEY " + autoInc + ", " +
+                    "id " + idType + " PRIMARY KEY" + autoInc + ", " +
                     "mc_material VARCHAR(150) NOT NULL, " +
-                    "sale_amt DOUBLE NOT NULL)");
+                    "sale_amt DOUBLE" + dblType + " NOT NULL)");
 
             st.executeUpdate("CREATE TABLE IF NOT EXISTS " +
                     tablePrefix + "worth (" +
-                    "id INTEGER PRIMARY KEY " + autoInc + ", " +
+                    "id " + idType + " PRIMARY KEY " + autoInc + ", " +
                     "mc_material VARCHAR(150) NOT NULL UNIQUE, " +
-                    "lastWorth DOUBLE NOT NULL, " +
+                    "lastWorth DOUBLE" + dblType + " NOT NULL, " +
                     "needsUpdate TINYINT(1) NOT NULL DEFAULT 0)");
         } catch (SQLException e) {
             AcoWorthPlugin.singleton.getLogger().severe(e.getMessage());
@@ -97,16 +108,16 @@ public class Storage {
             st.executeUpdate("INSERT INTO " + tablePrefix + "sales (mc_material, sale_amt) VALUES ('" + matName + "', '" + pricePer + "')");
 
             ResultSet ids =  st.executeQuery("SELECT id FROM " + tablePrefix + "sales WHERE mc_material = '" + matName + "' ORDER BY id DESC LIMIT " + fileCap);
-            String csvIDs = ""; // Hacky solution for older MySQL / MariaDB servers
+            StringBuilder csvIDs = new StringBuilder(); // Hacky solution for older MySQL / MariaDB servers
 
             while (ids.next()) {
                 int id = ids.getInt("id");
 
                 if (!ids.isFirst()) {
-                    csvIDs += ",";
+                    csvIDs.append(",");
                 }
 
-                csvIDs += Integer.toString(id);
+                csvIDs.append(id);
             }
 
             st.executeUpdate("DELETE FROM " + tablePrefix + "sales WHERE id NOT IN (" + csvIDs + ") AND mc_material = '" + matName + "'");
@@ -206,11 +217,14 @@ public class Storage {
 
             worth = finalAvg;
             boolean mysql = cfg.getBoolean("storage.useMySQL");
+            boolean pgsql = cfg.getBoolean("storage.usePostgreSQL");
 
             st = conn.createStatement();
 
             if (mysql) {
                 st.executeUpdate("INSERT INTO " + tablePrefix + "worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0) ON DUPLICATE KEY UPDATE lastworth = '" + worth + "', needsUpdate = 0");
+            } else if (pgsql) {
+                st.executeUpdate("INSERT INTO " + tablePrefix + "worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0) ON CONFLICT(mc_material) DO UPDATE SET lastworth = '" + worth + "', needsUpdate = 0");
             } else {
                 st.executeUpdate("INSERT OR REPLACE INTO " + tablePrefix + "worth (mc_material, lastWorth, needsUpdate) VALUES ('" + matName + "', " + worth + ", 0)");
             }
