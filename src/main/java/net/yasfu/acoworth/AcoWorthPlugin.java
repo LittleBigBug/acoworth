@@ -16,7 +16,7 @@ import com.Acrobot.ChestShop.ChestShop;
 import de.epiceric.shopchest.ShopChest;
 import org.maxgamer.quickshop.QuickShop;
 import me.badbones69.crazyauctions.Main;
-import su.nightexpress.quantumshop.QuantumShop;
+import su.nightexpress.qshop.QShop;
 import com.spawnchunk.auctionhouse.AuctionHouse;
 import net.yasfu.acoworth.ShopListeners.ChestshopListener;
 import net.yasfu.acoworth.ShopListeners.ShopChestListener;
@@ -95,7 +95,7 @@ public class AcoWorthPlugin extends JavaPlugin {
         }
 
         Plugin quantumShop = plManager.getPlugin("QuantumShop");
-        if (quantumShop instanceof QuantumShop) {
+        if (quantumShop instanceof QShop) {
             plManager.registerEvents(new net.yasfu.acoworth.ShopListeners.QuantumshopListener(this), this);
             logger.info("QuantumShop was found! Using QuantumShop.");
         }

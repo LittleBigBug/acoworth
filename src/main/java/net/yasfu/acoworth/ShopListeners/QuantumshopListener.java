@@ -8,13 +8,13 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.configuration.file.FileConfiguration;
 import net.yasfu.acoworth.AcoWorthPlugin;
-import su.nightexpress.quantumshop.modules.list.chestshop.events.ChestShopBuyEvent;
-import su.nightexpress.quantumshop.modules.list.chestshop.events.ChestShopSellEvent;
-import su.nightexpress.quantumshop.modules.list.chestshop.objects.ShopChest;
-import su.nightexpress.quantumshop.modules.list.gui.objects.ShopProduct;
-import su.nightexpress.quantumshop.modules.list.gui.objects.PreparedProduct;
-import su.nightexpress.quantumshop.modules.list.gui.events.GUIShopBuyItemEvent;
-import su.nightexpress.quantumshop.modules.list.gui.events.GUIShopSellItemEvent;
+import su.nightexpress.qshop.modules.list.chestshop.event.ChestShopBuyEvent;
+import su.nightexpress.qshop.modules.list.chestshop.event.ChestShopSellEvent;
+import su.nightexpress.qshop.modules.list.chestshop.object.ShopChest;
+import su.nightexpress.qshop.modules.list.gui.object.ShopProduct;
+import su.nightexpress.qshop.modules.list.gui.object.PreparedProduct;
+import su.nightexpress.qshop.modules.list.gui.event.GUIShopBuyItemEvent;
+import su.nightexpress.qshop.modules.list.gui.event.GUIShopSellItemEvent;
 
 /*
 QuantumShop
@@ -77,7 +77,7 @@ public class QuantumshopListener implements Listener {
         }
 
         ShopChest shop = buyEvent.getShop();
-        double price = shop.getBuyPrice();
+        double price = shop.getBuyPrice(false);
         ItemStack stack = shop.getProductWithAmount();
 
         addQuantumSale(stack, price);
@@ -93,7 +93,7 @@ public class QuantumshopListener implements Listener {
         }
 
         ShopChest shop = sellEvent.getShop();
-        double price = shop.getSellPrice();
+        double price = shop.getSellPrice(false);
         ItemStack stack = shop.getProductWithAmount();
 
         addQuantumSale(stack, price);
